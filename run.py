@@ -6,7 +6,7 @@ import torch
 from query_strategies import RandomSampling, LeastConfidence, MarginSampling, EntropySampling, \
                                 LeastConfidenceDropout, MarginSamplingDropout, EntropySamplingDropout, \
                                 KMeansSampling, KCenterGreedy, BALDDropout, CoreSet, \
-                                AdversarialBIM, AdversarialDeepFool, ActiveLearningByLearning
+                                AdversarialBIM, AdversarialDeepFool, ActiveLearningByLearning, Gaussian
 
 # parameters
 SEED = 1
@@ -86,6 +86,7 @@ strategy = RandomSampling(X_tr, Y_tr, idxs_lb, net, handler, args)
 # albl_list = [MarginSampling(X_tr, Y_tr, idxs_lb, net, handler, args),
 #              KMeansSampling(X_tr, Y_tr, idxs_lb, net, handler, args)]
 # strategy = ActiveLearningByLearning(X_tr, Y_tr, idxs_lb, net, handler, args, strategy_list=albl_list, delta=0.1)
+# strategy = Gaussian(X_tr, Y_tr, idxs_lb, net, handler, args)
 
 # print info
 print(DATA_NAME)
