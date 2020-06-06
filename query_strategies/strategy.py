@@ -15,7 +15,7 @@ class Strategy:
         self.n_pool = len(Y)
         use_cuda = torch.cuda.is_available()
         self.device = torch.device("cuda" if use_cuda else "cpu")
-		self.clf = None
+        self.clf = None
 
     def query(self, n):
         pass

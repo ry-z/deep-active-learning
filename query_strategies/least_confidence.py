@@ -9,4 +9,6 @@ class LeastConfidence(Strategy):
 		idxs_unlabeled = np.arange(self.n_pool)[~self.idxs_lb]
 		probs = self.predict_prob(self.X[idxs_unlabeled], self.Y[idxs_unlabeled])
 		U = probs.max(1)[0]
+		print(type(U))
+		print(U.sort()[1][:n])		
 		return idxs_unlabeled[U.sort()[1][:n]]

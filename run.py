@@ -13,6 +13,8 @@ SEED = 1
 
 NUM_INIT_LB = 10000
 NUM_QUERY = 1000
+NUM_SUBSET = 2000
+NUM_COMPONENTS = 10
 NUM_ROUND = 10
 
 DATA_NAME = 'MNIST'
@@ -70,7 +72,7 @@ idxs_lb[idxs_tmp[:NUM_INIT_LB]] = True
 net = get_net(DATA_NAME)
 handler = get_handler(DATA_NAME)
 
-strategy = RandomSampling(X_tr, Y_tr, idxs_lb, net, handler, args)
+# strategy = RandomSampling(X_tr, Y_tr, idxs_lb, net, handler, args)
 # strategy = LeastConfidence(X_tr, Y_tr, idxs_lb, net, handler, args)
 # strategy = MarginSampling(X_tr, Y_tr, idxs_lb, net, handler, args)
 # strategy = EntropySampling(X_tr, Y_tr, idxs_lb, net, handler, args)
@@ -86,7 +88,7 @@ strategy = RandomSampling(X_tr, Y_tr, idxs_lb, net, handler, args)
 # albl_list = [MarginSampling(X_tr, Y_tr, idxs_lb, net, handler, args),
 #              KMeansSampling(X_tr, Y_tr, idxs_lb, net, handler, args)]
 # strategy = ActiveLearningByLearning(X_tr, Y_tr, idxs_lb, net, handler, args, strategy_list=albl_list, delta=0.1)
-# strategy = Gaussian(X_tr, Y_tr, idxs_lb, net, handler, args)
+strategy = Gaussian(X_tr, Y_tr, idxs_lb, net, handler, args, NUM_COMPONENTS, NUM_SUBSET)
 
 # print info
 print(DATA_NAME)
